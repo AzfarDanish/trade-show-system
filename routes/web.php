@@ -26,6 +26,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
     Route::get('/admin/booths/create', [BoothController::class, 'create']);
     Route::post('/admin/booths/store', [BoothController::class, 'store']);
+
+    Route::get('/admin/exhibitors', [AdminController::class, 'exhibitors']);
+
+    Route::get('/admin/leads', [AdminController::class, 'leads']);
+
+    Route::get('/admin/appointments', [AdminController::class, 'appointments']);
+
+    Route::get('/admin/booths', [AdminController::class, 'booths']);
 });
 
 Route::middleware(['auth', 'exhibitor'])->group(function () {
@@ -43,6 +51,15 @@ Route::middleware(['auth', 'exhibitor'])->group(function () {
     Route::get('/exhibitor/appointments', [AppointmentController::class, 'index']);
     Route::get('/exhibitor/appointments/create', [AppointmentController::class, 'create']);
     Route::post('/exhibitor/appointments/store', [AppointmentController::class, 'store']);
+
+    Route::get('/exhibitor/appointments/edit/{id}', [AppointmentController::class, 'edit']);
+    Route::put('/exhibitor/appointments/update/{id}', [AppointmentController::class, 'update']);
+    Route::delete('/exhibitor/appointments/delete/{id}', [AppointmentController::class, 'destroy']);
+
+    Route::get('/exhibitor/leads/edit/{id}', [LeadController::class, 'edit']);
+    Route::put('/exhibitor/leads/update/{id}', [LeadController::class, 'update']);
+    Route::delete('/exhibitor/leads/delete/{id}', [LeadController::class, 'destroy']);
+    Route::get('/exhibitor/leads/search', [LeadController::class, 'search']);
 
     Route::get('/exhibitor/profile/create', function () {
         return view('exhibitor.create-profile');

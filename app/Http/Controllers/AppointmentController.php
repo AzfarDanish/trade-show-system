@@ -40,4 +40,49 @@ class AppointmentController extends Controller
 
         return redirect('/exhibitor/appointments');
     }
+
+    public function edit($id)
+    {
+        $appointment = appointments::where('appointment_id', $id)
+            ->where('exhibitor_id', Auth::user()->exhibitor->exhibitor_id)
+            ->firstOrFail();
+
+        return view('exhibitor.appointments.edit', compact('appointment'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'client_name' => 'required',
+            'appointment_date' => 'required',
+            'appointment_time' => 'required',
+            'purpose' => 'required',
+            'status' => 'required'
+        ]);
+
+        $appointment = appointments::where('appointment_id', $id)
+            ->where('exhibitor_id', Auth::user()->exhibitor->exhibitor_id)
+            ->firstOrFail();
+
+        $appointment->update([
+            'client_name' => $request->client_name,
+            'appointment_date' => $request->appointment_date,
+            'appointment_time' => $request->appointment_time,
+            'purpose' => $request->purpose,
+            'status' => $request->status
+        ]);
+
+        return redirect('/exhibitor/appointments');
+    }
+
+    public function destroy($id)
+    {
+        $appointment = appointments::where('appointment_id', $id)
+            ->where('exhibitor_id', Auth::user()->exhibitor->exhibitor_id)
+            ->firstOrFail();
+
+        $appointment->delete();
+
+        return redirect('/exhibitor/appointments');
+    }
 }
