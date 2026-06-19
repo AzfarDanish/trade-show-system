@@ -7,6 +7,7 @@ use App\Models\booths;
 use App\Models\exhibitors;
 use App\Models\leads;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -53,5 +54,47 @@ class AdminController extends Controller
         $booths = booths::with('exhibitor')->get();
 
         return view('admin.booths.index', compact('booths'));
+    }
+
+    public function searchExhibitors(Request $request)
+    {
+        $keyword = $request->search;
+
+        $exhibitors = exhibitors::where('company_name', 'like', "%$keyword%")
+            ->orWhere('representative_name', 'like', "%$keyword%")
+            ->get();
+
+        return view('admin.exhibitors.index', compact('exhibitors'));
+    }
+
+    public function searchLeads(Request $request)
+    {
+        $keyword = $request->search;
+
+        $leads = leads::where('lead_name', 'like', "%$keyword%")
+            ->orWhere('company_name', 'like', "%$keyword%")
+            ->get();
+
+        return view('admin.leads.index', compact('leads'));
+    }
+
+    public function searchBooths(Request $request)
+    {
+        $keyword = $request->search;
+
+        $booths = booths::where('booth_number', 'like', "%$keyword%")
+            ->orWhere('location', 'like', "%$keyword%")
+            ->get();
+
+        return view('admin.booths.index', compact('booths'));
+    }
+
+    public function filterAppointments(Request $request)
+    {
+        $status = $request->status;
+
+        $appointments = appointments::where('status', $status)->get();
+
+        return view('admin.appointments.index', compact('appointments'));
     }
 }
