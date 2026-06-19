@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoothController;
 use App\Http\Controllers\ExhibitorController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -21,13 +22,15 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/admin/booths/create', [BoothController::class, 'create']);
+    Route::post('/admin/booths/store', [BoothController::class, 'store']);
 });
 
 Route::middleware(['auth', 'exhibitor'])->group(function () {
     Route::get('/exhibitor/dashboard', [ExhibitorController::class, 'dashboard']);
-});
-
-Route::middleware(['auth', 'exhibitor'])->group(function () {
+    Route::get('/exhibitor/profile/edit', [ExhibitorController::class, 'edit']);
+    Route::put('/exhibitor/profile/update', [ExhibitorController::class, 'update']);
+    Route::get('/exhibitor/booth', [BoothController::class, 'show']);
     Route::get('/exhibitor/profile/create', function () {
         return view('exhibitor.create-profile');
     });

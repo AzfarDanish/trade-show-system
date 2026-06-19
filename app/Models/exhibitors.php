@@ -19,4 +19,9 @@ class exhibitors extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function booth()
+    {
+        return $this->hasOne(booths::class, 'exhibitor_id');
+    }
 }
