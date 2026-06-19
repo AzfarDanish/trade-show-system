@@ -30,7 +30,7 @@ class BoothController extends Controller
             'location' => $request->location
         ]);
 
-        return redirect('/admin/booths');
+        return redirect('/admin/booths')->with('success', 'Booth assigned successfully.');
     }
 
     public function show()

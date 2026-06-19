@@ -38,7 +38,7 @@ class LeadController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect('/exhibitor/leads');
+        return redirect('/exhibitor/leads')->with('success', 'Lead added successfully.');
     }
     
     public function edit($id)
@@ -71,7 +71,7 @@ class LeadController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect('/exhibitor/leads');
+        return redirect('/exhibitor/leads')->with('success', 'Lead updated successfully.');
     }
 
     public function destroy($id)
@@ -82,7 +82,7 @@ class LeadController extends Controller
 
         $lead->delete();
 
-        return redirect('/exhibitor/leads');
+        return redirect('/exhibitor/leads')->with('success', 'Lead deleted successfully.');
     }
 
     public function search(Request $request)

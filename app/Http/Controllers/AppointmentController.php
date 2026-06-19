@@ -38,7 +38,7 @@ class AppointmentController extends Controller
             'status' => 'Pending'
         ]);
 
-        return redirect('/exhibitor/appointments');
+        return redirect('/exhibitor/appointments')->with('success', 'Appointment created successfully.');
     }
 
     public function edit($id)
@@ -72,7 +72,7 @@ class AppointmentController extends Controller
             'status' => $request->status
         ]);
 
-        return redirect('/exhibitor/appointments');
+        return redirect('/exhibitor/appointments')->with('success', 'Appointment updated successfully.');
     }
 
     public function destroy($id)
@@ -83,6 +83,6 @@ class AppointmentController extends Controller
 
         $appointment->delete();
 
-        return redirect('/exhibitor/appointments');
+        return redirect('/exhibitor/appointments')->with('success', 'Appointment deleted successfully.');
     }
 }

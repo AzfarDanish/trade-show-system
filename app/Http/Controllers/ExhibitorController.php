@@ -23,7 +23,7 @@ class ExhibitorController extends Controller
             'phone_number' => $request->phone_number
         ]);
 
-        return redirect('/exhibitor/dashboard');
+        return redirect('/exhibitor/dashboard')->with('success', 'Profile created successfully.');
     }
 
     public function dashboard()
@@ -56,6 +56,6 @@ class ExhibitorController extends Controller
             'phone_number' => $request->phone_number
         ]);
 
-        return redirect('/exhibitor/dashboard');
+        return redirect('/exhibitor/dashboard')->with('success', 'Profile updated successfully.');
     }
 }
