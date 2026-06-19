@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\BoothController;
 use App\Http\Controllers\ExhibitorController;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'exhibitor'])->group(function () {
     Route::get('/exhibitor/dashboard', [ExhibitorController::class, 'dashboard']);
+
     Route::get('/exhibitor/profile/edit', [ExhibitorController::class, 'edit']);
     Route::put('/exhibitor/profile/update', [ExhibitorController::class, 'update']);
+
     Route::get('/exhibitor/booth', [BoothController::class, 'show']);
+
+    Route::get('/exhibitor/leads', [LeadController::class, 'index']);
+    Route::get('/exhibitor/leads/create', [LeadController::class, 'create']);
+    Route::post('/exhibitor/leads/store', [LeadController::class, 'store']);
+
     Route::get('/exhibitor/profile/create', function () {
         return view('exhibitor.create-profile');
     });

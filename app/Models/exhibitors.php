@@ -24,4 +24,9 @@ class exhibitors extends Model
     {
         return $this->hasOne(booths::class, 'exhibitor_id');
     }
+
+    public function leads()
+    {
+        return $this->hasMany(leads::class, 'exhibitor_id');
+    }
 }
