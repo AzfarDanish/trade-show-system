@@ -1,17 +1,12 @@
-<h1>Admin Dashboard</h1>
+@extends('layouts.app')
+@section('content')
 
-<p>Total Users: {{ $totalUsers }}</p>
-<p>Total Exhibitors: {{ $totalExhibitors }}</p>
-<p>Total Booths: {{ $totalBooths }}</p>
-<p>Total Leads: {{ $totalLeads }}</p>
-<p>Total Appointments: {{ $totalAppointments }}</p>
+    <h1>Admin Dashboard</h1>
 
-<a href="/admin/exhibitors">View Exhibitors</a>
-<a href="/admin/booths">View Booths</a>
-<a href="/admin/leads">View Leads</a>
-<a href="/admin/appointments">View Appointments</a>
+    <p>Total Users: {{ $totalUsers }}</p>
+    <p>Total Exhibitors: {{ $totalExhibitors }}</p>
+    <p>Total Booths: {{ $totalBooths }}</p>
+    <p>Total Leads: {{ $totalLeads }}</p>
+    <p>Total Appointments: {{ $totalAppointments }}</p>
 
-<form method="POST" action="/logout">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@endsection

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
     <form method="POST" action="/register">
         @csrf
 
@@ -19,5 +13,4 @@
 
         <button type="submit">Register</button>
     </form>
-</body>
-</html>
+@endsection
