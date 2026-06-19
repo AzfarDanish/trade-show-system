@@ -29,4 +29,9 @@ class exhibitors extends Model
     {
         return $this->hasMany(leads::class, 'exhibitor_id');
     }
+
+    public function appointments()
+    {
+        return $this->hasMany(appointments::class, 'exhibitor_id');
+    }
 }

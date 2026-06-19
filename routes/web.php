@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\BoothController;
 use App\Http\Controllers\ExhibitorController;
@@ -38,6 +39,10 @@ Route::middleware(['auth', 'exhibitor'])->group(function () {
     Route::get('/exhibitor/leads', [LeadController::class, 'index']);
     Route::get('/exhibitor/leads/create', [LeadController::class, 'create']);
     Route::post('/exhibitor/leads/store', [LeadController::class, 'store']);
+
+    Route::get('/exhibitor/appointments', [AppointmentController::class, 'index']);
+    Route::get('/exhibitor/appointments/create', [AppointmentController::class, 'create']);
+    Route::post('/exhibitor/appointments/store', [AppointmentController::class, 'store']);
 
     Route::get('/exhibitor/profile/create', function () {
         return view('exhibitor.create-profile');
