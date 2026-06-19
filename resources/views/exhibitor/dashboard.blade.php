@@ -5,6 +5,8 @@
 
     <p>Welcome, {{ $user->name }}</p>
 
+    <h2>Profile Information</h2>
+
     <p>Company Name: {{ $exhibitor->company_name }}</p>
     <p>Representative: {{ $exhibitor->representative_name }}</p>
     <p>Phone Number: {{ $exhibitor->phone_number }}</p>

@@ -67,5 +67,11 @@
         <p>© 2026 Trade Show System</p>
     </footer>
 
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this record?');
+        }
+    </script>
+
 </body>
 </html>

@@ -14,7 +14,7 @@
             Edit
         </a>
 
-        <form method="POST" action="/exhibitor/leads/delete/{{ $lead->lead_id }}">
+        <form method="POST" action="/exhibitor/leads/delete/{{ $lead->lead_id }}" onsubmit="return confirmDelete()">
             @csrf
             @method('DELETE')
 
