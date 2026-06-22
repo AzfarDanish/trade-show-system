@@ -1,14 +1,35 @@
 @extends('layouts.app')
+
+@section('title', 'Dashboard')
+
 @section('content')
 
-    <h1>Admin Dashboard</h1>
+    <div class="welcome-banner">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome back, {{ Auth::user()->name ?? 'Admin' }}</p>
+    </div>
 
-    <h2>System Overview</h2>
-
-    <p>Total Users: {{ $totalUsers }}</p>
-    <p>Total Exhibitors: {{ $totalExhibitors }}</p>
-    <p>Total Booths: {{ $totalBooths }}</p>
-    <p>Total Leads: {{ $totalLeads }}</p>
-    <p>Total Appointments: {{ $totalAppointments }}</p>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ $totalUsers }}</div>
+            <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ $totalExhibitors }}</div>
+            <div class="stat-label">Total Exhibitors</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ $totalBooths }}</div>
+            <div class="stat-label">Total Booths</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ $totalLeads }}</div>
+            <div class="stat-label">Total Leads</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ $totalAppointments }}</div>
+            <div class="stat-label">Total Appointments</div>
+        </div>
+    </div>
 
 @endsection

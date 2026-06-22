@@ -1,20 +1,48 @@
 @extends('layouts.app')
+@section('title', 'Add Lead')
+
 @section('content')
-    <h1>Add Lead</h1>
 
-    <form method="POST" action="/exhibitor/leads/store">
-        @csrf
+    <div class="page-header">
+        <h1>Add Lead</h1>
+    </div>
 
-        <input type="text" name="lead_name" placeholder="Lead Name">
+    <div class="form-card">
+        <h2>Lead Details</h2>
 
-        <input type="text" name="company_name" placeholder="Company Name">
+        <form method="POST" action="/exhibitor/leads/store">
+            @csrf
 
-        <input type="text" name="phone" placeholder="Phone Number">
+            <div class="form-group">
+                <label>Lead Name</label>
+                <input type="text" name="lead_name" placeholder="Full name">
+            </div>
 
-        <input type="email" name="email" placeholder="Email">
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" name="company_name" placeholder="Company">
+            </div>
 
-        <textarea name="notes" placeholder="Notes"></textarea>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" placeholder="e.g. +1 234 567 890">
+            </div>
 
-        <button type="submit">Save Lead</button>
-    </form>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="email@company.com">
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea name="notes" placeholder="Any additional notes..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Save Lead</button>
+                <a href="/exhibitor/leads" class="btn btn-outline">Cancel</a>
+            </div>
+        </form>
+    </div>
+
 @endsection

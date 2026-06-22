@@ -93,7 +93,11 @@ class AdminController extends Controller
     {
         $status = $request->status;
 
-        $appointments = appointments::where('status', $status)->get();
+        if ($status) {
+            $appointments = appointments::where('status', $status)->get();
+        } else {
+            $appointments = appointments::all();
+        }
 
         return view('admin.appointments.index', compact('appointments'));
     }

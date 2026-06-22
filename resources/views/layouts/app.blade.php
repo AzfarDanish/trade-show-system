@@ -1,77 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trade Show System</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpoTrack — @yield('title', 'Dashboard')</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
 
-    <header>
-        <h1>Trade Show Management System</h1>
-    </header>
-
-    <nav>
-        @if(Auth::check())
-
-            @if(Auth::user()->role == 'admin')
-                <a href="/admin/dashboard">Dashboard</a>
-                <a href="/admin/exhibitors">Exhibitors</a>
-                <a href="/admin/booths">Booths</a>
-                <a href="/admin/leads">Leads</a>
-                <a href="/admin/appointments">Appointments</a>
-            @endif
-
-            @if(Auth::user()->role == 'exhibitor')
-                <a href="/exhibitor/dashboard">Dashboard</a>
-                <a href="/exhibitor/booth">My Booth</a>
-                <a href="/exhibitor/leads">My Leads</a>
-                <a href="/exhibitor/appointments">My Appointments</a>
-            @endif
-
-            <form method="POST" action="/logout" style="display:inline;">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-
-        @else
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        @endif
-    </nav>
-
-    <hr>
-
-    @if(session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <div>
-        @yield('content')
+<header class="topbar">
+    <div class="logo">ExpoTrack</div>
+    <div class="top-right">
+        <span>{{ Auth::user()->role }}</span>
+        <form method="POST" action="/logout">
+            @csrf
+            <button type="submit" class="btn-logout">Logout</button>
+        </form>
     </div>
+</header>
 
-    <hr>
+<div class="main-layout">
 
-    <footer>
-        <p>© 2026 Trade Show System</p>
-    </footer>
+    <aside class="sidebar">
+        <div class="sidebar-label">Navigation</div>
 
-    <script>
-        function confirmDelete() {
-            return confirm('Are you sure you want to delete this record?');
-        }
-    </script>
+        @if(Auth::user()->role == 'admin')
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/admin/exhibitors">Exhibitors</a>
+            <a href="/admin/booths">Booths</a>
+            <a href="/admin/leads">Leads</a>
+            <a href="/admin/appointments">Appointments</a>
+        @endif
+
+        @if(Auth::user()->role == 'exhibitor')
+            <a href="/exhibitor/dashboard">Dashboard</a>
+            <a href="/exhibitor/booth">My Booth</a>
+            <a href="/exhibitor/leads">Leads</a>
+            <a href="/exhibitor/appointments">Appointments</a>
+            <a href="/exhibitor/profile/edit">Profile</a>
+        @endif
+    </aside>
+
+    <main class="content">
+        @if(session('success'))
+            <div class="flash flash-success">{{ session('success') }}</div>
+        @endif
+        @if(session('error'))
+            <div class="flash flash-error">{{ session('error') }}</div>
+        @endif
+        @yield('content')
+    </main>
+
+</div>
 
 </body>
 </html>

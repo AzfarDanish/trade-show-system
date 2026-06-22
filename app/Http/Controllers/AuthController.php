@@ -24,7 +24,7 @@ class AuthController extends Controller
             'role' => 'exhibitor'
         ]);
 
-        return redirect('/login')->with('success', 'Registration successful. Please login.');
+        return redirect('/')->with('success', 'Registration successful. Please login.');
     }
 
     public function login(Request $request)
@@ -39,7 +39,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role == 'admin') {
-                return redirect('/admin/dashboard');
+                return redirect('/admin/dashboard' );
             }
 
             if (Auth::user()->role == 'exhibitor') {
@@ -65,7 +65,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'Logged out successfully.');
+        return redirect('/')->with('success', 'Logged out successfully.');
     }
 }
 

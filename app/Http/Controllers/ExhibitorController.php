@@ -30,8 +30,23 @@ class ExhibitorController extends Controller
     {
         $user = Auth::user();
         $exhibitor = $user->exhibitor;
+        $totalLeads = $exhibitor->leads()->count();
+        $totalAppointments = $exhibitor->appointments()->count();
+        $appointmentsPending = $exhibitor->appointments()->where('status', 'Pending')->count();
+        $appointmentsConfirmed = $exhibitor->appointments()->where('status', 'Confirmed')->count();
+        $appointmentsCompleted = $exhibitor->appointments()->where('status', 'Completed')->count();
+        $hasBooth = $exhibitor->booth ? 'Assigned' : 'Not assigned';
 
-        return view('exhibitor.dashboard', compact('user', 'exhibitor'));
+        return view('exhibitor.dashboard', compact(
+            'user',
+            'exhibitor',
+            'totalLeads',
+            'totalAppointments',
+            'appointmentsPending',
+            'appointmentsConfirmed',
+            'appointmentsCompleted',
+            'hasBooth'
+        ));
     }
 
     public function edit()

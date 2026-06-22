@@ -17,9 +17,18 @@ class ExhibitorMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->role === 'exhibitor') {
+
+            if (in_array($request->path(), ['exhibitor/profile/create', 'exhibitor/profile/store'])) {
+                return $next($request);
+            }
+
+            if (!Auth::user()->exhibitor) {
+                return redirect('/exhibitor/profile/create');
+            }
+
             return $next($request);
         }
 
-        return redirect('/login');
+        return redirect('/');
     }
 }
