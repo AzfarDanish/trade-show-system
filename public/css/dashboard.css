@@ -362,8 +362,13 @@ button[type="submit"]:hover {
 
 table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: .88rem;
+}
+
+th, td {
+  overflow-wrap: break-word;
 }
 
 thead {

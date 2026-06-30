@@ -17,10 +17,6 @@
             <div class="stat-label">Total Appointments</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">{{ $appointmentsPending }}</div>
-            <div class="stat-label">Pending</div>
-        </div>
-        <div class="stat-card">
             <div class="stat-value">{{ $appointmentsConfirmed }}</div>
             <div class="stat-label">Confirmed</div>
         </div>

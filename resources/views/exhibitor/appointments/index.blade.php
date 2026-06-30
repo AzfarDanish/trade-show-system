@@ -16,20 +16,20 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Client</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Purpose</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th style="width:20%">Client</th>
+                        <th style="width:16%">Date & Time</th>
+                        <th style="width:28%">Purpose</th>
+                        <th style="width:16%">Status</th>
+                        <th style="width:20%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($appointments as $appointment)
                         <tr>
                             <td>{{ $appointment->client_name }}</td>
-                            <td>{{ $appointment->appointment_date }}</td>
-                            <td>{{ $appointment->appointment_time }}</td>
+                            <td>{{ $appointment->appointment_date }}<br>
+                                <span style="color:var(--neutral-400);font-size:.78rem;">{{ $appointment->appointment_time }}</span>
+                            </td>
                             <td>{{ $appointment->purpose }}</td>
                             <td>
                                 <span class="status-badge status-badge-{{ strtolower($appointment->status) }}">

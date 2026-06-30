@@ -32,7 +32,6 @@ class ExhibitorController extends Controller
         $exhibitor = $user->exhibitor;
         $totalLeads = $exhibitor->leads()->count();
         $totalAppointments = $exhibitor->appointments()->count();
-        $appointmentsPending = $exhibitor->appointments()->where('status', 'Pending')->count();
         $appointmentsConfirmed = $exhibitor->appointments()->where('status', 'Confirmed')->count();
         $appointmentsCompleted = $exhibitor->appointments()->where('status', 'Completed')->count();
         $hasBooth = $exhibitor->booth ? 'Assigned' : 'Not assigned';
@@ -42,7 +41,6 @@ class ExhibitorController extends Controller
             'exhibitor',
             'totalLeads',
             'totalAppointments',
-            'appointmentsPending',
             'appointmentsConfirmed',
             'appointmentsCompleted',
             'hasBooth'

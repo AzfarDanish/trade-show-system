@@ -27,10 +27,6 @@
         <h2>Create Account</h2>
         <p class="auth-subtitle">Get started with ExpoTrack</p>
 
-        @if($errors->any())
-            <div class="flash flash-error">{{ $errors->first() }}</div>
-        @endif
-
         <form class="auth-form" method="POST" action="/register">
             @csrf
 

@@ -35,7 +35,7 @@ class AppointmentController extends Controller
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'purpose' => $request->purpose,
-            'status' => 'Pending'
+            'status' => 'Confirmed'
         ]);
 
         return redirect('/exhibitor/appointments')->with('success', 'Appointment created successfully.');

@@ -19,9 +19,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Company</th>
-                        <th>Representative</th>
-                        <th>Phone</th>
+                        <th style="width:25%">Company</th>
+                        <th style="width:25%">Representative</th>
+                        <th style="width:20%">Phone</th>
+                        <th style="width:15%">Booth</th>
+                        <th style="width:15%">Leads</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +32,8 @@
                             <td>{{ $exhibitor->company_name }}</td>
                             <td>{{ $exhibitor->representative_name }}</td>
                             <td>{{ $exhibitor->phone_number }}</td>
+                            <td>{{ $exhibitor->booth->booth_number ?? '—' }}</td>
+                            <td>{{ $exhibitor->leads->count() }}</td>
                         </tr>
                     @endforeach
                 </tbody>

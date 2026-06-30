@@ -22,11 +22,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Company</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th style="width:18%">Lead</th>
+                        <th style="width:22%">Company</th>
+                        <th style="width:22%">Contact</th>
+                        <th style="width:18%">Date Added</th>
+                        <th style="width:20%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,8 +34,8 @@
                         <tr>
                             <td>{{ $lead->lead_name }}</td>
                             <td>{{ $lead->company_name }}</td>
-                            <td>{{ $lead->phone }}</td>
-                            <td>{{ $lead->email }}</td>
+                            <td>{{ $lead->phone ?? '—' }}<br><span style="color:var(--neutral-400);font-size:.78rem;">{{ $lead->email ?? '' }}</span></td>
+                            <td>{{ $lead->created_at ? $lead->created_at->format('M d, Y') : '—' }}</td>
                             <td>
                                 <div class="inline-actions">
                                     <a href="/exhibitor/leads/edit/{{ $lead->lead_id }}" class="btn btn-sm btn-outline">Edit</a>

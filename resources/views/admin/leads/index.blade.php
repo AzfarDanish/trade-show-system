@@ -19,8 +19,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Company</th>
+                        <th style="width:20%">Lead</th>
+                        <th style="width:22%">Company</th>
+                        <th style="width:22%">Contact</th>
+                        <th style="width:20%">Exhibitor</th>
+                        <th style="width:16%">Date Added</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +31,9 @@
                         <tr>
                             <td>{{ $lead->lead_name }}</td>
                             <td>{{ $lead->company_name }}</td>
+                            <td>{{ $lead->phone ?? '—' }}<br><span style="color:var(--neutral-400);font-size:.78rem;">{{ $lead->email ?? '' }}</span></td>
+                            <td>{{ $lead->exhibitor->company_name ?? '—' }}</td>
+                            <td>{{ $lead->created_at ? $lead->created_at->format('M d, Y') : '—' }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -27,14 +27,6 @@
         <h2>Welcome Back</h2>
         <p class="auth-subtitle">Sign in to your account</p>
 
-        @if(session('success'))
-            <div class="flash flash-success">{{ session('success') }}</div>
-        @endif
-
-        @if($errors->any())
-            <div class="flash flash-error">{{ $errors->first() }}</div>
-        @endif
-
         <form class="auth-form" method="POST" action="/">
             @csrf
 
