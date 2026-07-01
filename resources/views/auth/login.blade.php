@@ -19,8 +19,10 @@
 </head>
 <body>
 
+<!-- Login page layout with branded left panel and form on the right -->
 <div class="auth-container">
 
+    <!-- Left: branding and feature highlights -->
     <div class="auth-left">
         <h1>ExpoTrack</h1>
         <p class="tagline">Smart trade show management for exhibitors and organizers.</p>
@@ -32,6 +34,7 @@
         </div>
     </div>
 
+    <!-- Right: sign-in form -->
     <div class="auth-right">
         <h2>Welcome Back</h2>
         <p class="auth-subtitle">Sign in to your account</p>

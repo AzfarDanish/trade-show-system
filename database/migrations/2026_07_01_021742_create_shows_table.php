@@ -14,12 +14,24 @@ return new class extends Migration
             $table->enum('status', ['active', 'ended'])->default('active');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->string('poster')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('booths', function (Blueprint $table) {
+            $table->foreign('show_id')
+                ->references('show_id')
+                ->on('shows')
+                ->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
+        Schema::table('booths', function (Blueprint $table) {
+            $table->dropForeign(['show_id']);
+        });
+
         Schema::dropIfExists('shows');
     }
 };

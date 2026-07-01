@@ -3,11 +3,13 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>My Booth</h1>
     </div>
 
     @if($booth)
+        <!-- Booth details card -->
         <div class="stat-card" style="max-width:450px;">
             <div class="stat-value">{{ $booth->booth_number }}</div>
             <div class="stat-label">Booth Number</div>
@@ -19,6 +21,7 @@
             </div>
         </div>
     @else
+        <!-- Empty state when no booth is assigned -->
         <div class="stat-card" style="max-width:450px;">
             <div class="empty-state" style="padding:24px 0;">
                 <p>No booth assigned yet.</p>

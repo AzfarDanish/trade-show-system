@@ -3,10 +3,12 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>Create Appointment</h1>
     </div>
 
+    <!-- Appointment creation form -->
     <div class="form-card">
         <h2>Appointment Details</h2>
 

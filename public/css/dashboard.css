@@ -2,10 +2,8 @@
 :root {
   --blue-800: #0B3D91;
   --blue-700: #1166D4;
-  --blue-600: #1A7AE0;
   --blue-500: #3D8FF5;
   --blue-100: #E8F1FD;
-  --blue-50: #F4F8FF;
 
   --neutral-950: #0F172A;
   --neutral-800: #1E293B;
@@ -20,9 +18,7 @@
 
   --radius-sm: 2px;
   --radius-md: 4px;
-  --radius-lg: 6px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.07);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
@@ -531,4 +527,136 @@ a:hover {
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--neutral-100);
+}
+
+/* ---------- Utilities ---------- */
+.flex-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.flex-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.meta-text {
+  color: var(--neutral-400);
+  font-size: .78rem;
+}
+
+/* ---------- Banners ---------- */
+.banner {
+  background: #dc2626;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.banner-ended {
+  font-weight: 600;
+  text-align: center;
+}
+
+.banner-join {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-join span {
+  font-weight: 600;
+}
+
+.banner-btn {
+  background: #fff;
+  color: #dc2626;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font);
+  font-size: .88rem;
+}
+
+/* ---------- Poster Layout ---------- */
+.poster-flex {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.poster-side {
+  flex-shrink: 0;
+}
+
+.poster-img {
+  width: 380px;
+  border-radius: 8px;
+}
+
+.poster-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- Show Info ---------- */
+.show-info {
+  padding: 16px;
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-100);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.show-info-row {
+  padding: 16px;
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-100);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.show-info-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--neutral-900);
+}
+
+.show-info-date {
+  font-size: .88rem;
+  color: var(--neutral-500);
+  margin-top: 4px;
+}
+
+/* ---------- Empty State Card ---------- */
+.empty-card {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-100);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.empty-card p {
+  color: var(--neutral-500);
+  margin-bottom: 16px;
+}
+
+/* ---------- Booth Stat ---------- */
+.booth-stat {
+  font-size: .82rem;
+  color: var(--neutral-400);
+  margin-top: 6px;
 }

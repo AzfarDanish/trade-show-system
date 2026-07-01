@@ -3,14 +3,16 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>Create New Show</h1>
     </div>
 
+    <!-- Show creation form with file upload for poster -->
     <div class="form-card">
         <h2>Show Details</h2>
 
-        <form method="POST" action="/admin/shows/store">
+        <form method="POST" action="/admin/shows/store" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
@@ -26,6 +28,11 @@
             <div class="form-group">
                 <label>End Date (optional)</label>
                 <input type="date" name="end_date">
+            </div>
+
+            <div class="form-group">
+                <label>Poster Image (optional)</label>
+                <input type="file" name="poster" accept="image/*">
             </div>
 
             <div class="form-actions">

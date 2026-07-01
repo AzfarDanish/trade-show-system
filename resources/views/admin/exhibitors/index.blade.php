@@ -3,18 +3,20 @@
 
 @section('content')
 
+    <!-- Page header with search bar -->
     <div class="page-header">
         <div>
             <h1>All Exhibitors</h1>
             <p class="subtitle">{{ count($exhibitors) }} exhibitor(s) registered</p>
         </div>
-        <form method="GET" action="/admin/exhibitors/search" style="display:flex; gap:8px; align-items:center;">
+        <form method="GET" action="/admin/exhibitors/search" class="flex-row">
             <input type="text" name="search" placeholder="Search Exhibitor" style="width:220px">
             <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">search</span> Search</button>
         </form>
     </div>
 
     @if(count($exhibitors) > 0)
+        <!-- Exhibitors table -->
         <div class="table-container">
             <table>
                 <thead>
@@ -40,6 +42,7 @@
             </table>
         </div>
     @else
+        <!-- Empty state when no exhibitors exist -->
         <div class="empty-state">
             <p>No exhibitors found.</p>
         </div>

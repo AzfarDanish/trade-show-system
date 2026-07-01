@@ -8,6 +8,7 @@ use App\Models\exhibitors;
 use App\Models\shows;
 use Illuminate\Support\Facades\Auth;
 
+// Manages booth creation, assignment, and viewing.
 class BoothController extends Controller
 {
     public function create()
@@ -18,6 +19,7 @@ class BoothController extends Controller
         return view('admin.booths.create', compact('exhibitors', 'activeShow'));
     }
 
+    // Assign a booth to an exhibitor. Requires an active show.
     public function store(Request $request)
     {
         $activeShow = shows::activeShow();
@@ -79,6 +81,7 @@ class BoothController extends Controller
         return redirect('/admin/booths')->with('success', 'Booth deleted successfully.');
     }
 
+    // Display the logged-in exhibitor's own booth.
     public function show()
     {
         $booth = Auth::user()->exhibitor->booth;

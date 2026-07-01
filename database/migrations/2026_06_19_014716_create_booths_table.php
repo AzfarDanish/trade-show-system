@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('booths', function (Blueprint $table) {
             $table->id('booth_id');
             $table->unsignedBigInteger('exhibitor_id');
+            $table->unsignedBigInteger('show_id')->nullable();
             $table->string('booth_number')->unique();
             $table->string('location');
             $table->timestamps();

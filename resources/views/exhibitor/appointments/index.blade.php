@@ -3,6 +3,7 @@
 
 @section('content')
 
+    <!-- Page header with add button -->
     <div class="page-header">
         <div>
             <h1>My Appointments</h1>
@@ -12,6 +13,7 @@
     </div>
 
     @if(count($appointments) > 0)
+        <!-- Appointments table with edit/delete actions -->
         <div class="table-container">
             <table>
                 <thead>
@@ -28,7 +30,7 @@
                         <tr>
                             <td>{{ $appointment->client_name }}</td>
                             <td>{{ $appointment->appointment_date }}<br>
-                                <span style="color:var(--neutral-400);font-size:.78rem;">{{ $appointment->appointment_time }}</span>
+                                <span class="meta-text">{{ $appointment->appointment_time }}</span>
                             </td>
                             <td>{{ $appointment->purpose }}</td>
                             <td>
@@ -52,6 +54,7 @@
             </table>
         </div>
     @else
+        <!-- Empty state when no appointments exist -->
         <div class="empty-state">
             <p>No appointments yet. <a href="/exhibitor/appointments/create">Schedule one</a>.</p>
         </div>

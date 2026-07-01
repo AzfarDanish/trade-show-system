@@ -3,10 +3,12 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>Create Profile</h1>
     </div>
 
+    <!-- Profile creation form -->
     <div class="form-card">
         <h2>Company Information</h2>
 

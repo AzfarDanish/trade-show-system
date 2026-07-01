@@ -3,13 +3,14 @@
 
 @section('content')
 
+    <!-- Page header with search and add button -->
     <div class="page-header">
         <div>
             <h1>My Leads</h1>
             <p class="subtitle">{{ count($leads) }} lead(s)</p>
         </div>
-        <div style="display:flex; gap:12px; align-items:center;">
-            <form method="GET" action="/exhibitor/leads/search" style="display:flex; gap:8px; align-items:center;">
+        <div class="flex-group">
+            <form method="GET" action="/exhibitor/leads/search" class="flex-row">
                 <input type="text" name="search" placeholder="Search Lead" style="width:200px">
                 <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">search</span> Search</button>
             </form>
@@ -18,6 +19,7 @@
     </div>
 
     @if(count($leads) > 0)
+        <!-- Leads table with edit/delete actions -->
         <div class="table-container">
             <table>
                 <thead>
@@ -34,7 +36,7 @@
                         <tr>
                             <td>{{ $lead->lead_name }}</td>
                             <td>{{ $lead->company_name }}</td>
-                            <td>{{ $lead->phone ?? '—' }}<br><span style="color:var(--neutral-400);font-size:.78rem;">{{ $lead->email ?? '' }}</span></td>
+                            <td>{{ $lead->phone ?? '—' }}<br><span class="meta-text">{{ $lead->email ?? '' }}</span></td>
                             <td>{{ $lead->created_at ? $lead->created_at->format('M d, Y') : '—' }}</td>
                             <td>
                                 <div class="inline-actions">
@@ -52,6 +54,7 @@
             </table>
         </div>
     @else
+        <!-- Empty state when no leads exist -->
         <div class="empty-state">
             <p>No leads yet. <a href="/exhibitor/leads/create">Add your first lead</a>.</p>
         </div>

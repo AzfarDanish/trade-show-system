@@ -13,6 +13,7 @@ class shows extends Model
         'status',
         'start_date',
         'end_date',
+        'poster',
     ];
 
     public function scopeActive($query)

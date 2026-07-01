@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+// Handles registration, login, and logout.
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -27,6 +28,8 @@ class AuthController extends Controller
         return redirect('/')->with('success', 'Registration successful. Please login.');
     }
 
+    // Redirect admins to /admin/dashboard and exhibitors to /exhibitor/dashboard.
+    // Redirect exhibitors without a profile to profile creation.
     public function login(Request $request)
     {
         $credentials = $request->validate([

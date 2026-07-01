@@ -24,6 +24,7 @@
 </head>
 <body>
 
+<!-- Top bar with user role label and logout button -->
 <header class="topbar">
     <div class="top-right">
         <span>{{ Auth::user()->role }}</span>
@@ -36,11 +37,13 @@
 
 <div class="main-layout">
 
+    <!-- Sidebar navigation — links change based on user role -->
     <aside class="sidebar">
         <div class="sidebar-logo">ExpoTrack</div>
         <div class="sidebar-divider"></div>
         <div class="sidebar-label">Navigation</div>
 
+        <!-- Admin navigation links -->
         @if(Auth::user()->role == 'admin')
             <a href="/admin/dashboard"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
             <a href="/admin/exhibitors"><span class="material-symbols-outlined">groups</span> Exhibitors</a>
@@ -49,6 +52,7 @@
             <a href="/admin/appointments"><span class="material-symbols-outlined">calendar_month</span> Appointments</a>
         @endif
 
+        <!-- Exhibitor navigation links -->
         @if(Auth::user()->role == 'exhibitor')
             <a href="/exhibitor/dashboard"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
             <a href="/exhibitor/booth"><span class="material-symbols-outlined">storefront</span> My Booth</a>
@@ -58,6 +62,7 @@
         @endif
     </aside>
 
+    <!-- Main content area with flash messages and page content -->
     <main class="content">
         @if(session('success'))
             <div class="flash flash-success">{{ session('success') }}</div>

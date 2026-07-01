@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('representative_name');
             $table->string('phone_number');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

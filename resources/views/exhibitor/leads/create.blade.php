@@ -3,10 +3,12 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>Add Lead</h1>
     </div>
 
+    <!-- Lead creation form -->
     <div class="form-card">
         <h2>Lead Details</h2>
 

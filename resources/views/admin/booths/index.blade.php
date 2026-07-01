@@ -3,6 +3,7 @@
 
 @section('content')
 
+    <!-- Page header with filter, search, and new booth button -->
     <div class="page-header">
         <div>
             <h1>All Booths</h1>
@@ -12,15 +13,15 @@
                 <p class="subtitle">{{ count($unassignedExhibitors) }} active exhibitor(s) without a booth</p>
             @endif
         </div>
-        <div style="display:flex; gap:12px; align-items:center;">
-            <form method="GET" action="/admin/booths" style="display:flex; gap:8px; align-items:center;">
+        <div class="flex-group">
+            <form method="GET" action="/admin/booths" class="flex-row">
                 <select name="filter" style="width:160px">
                     <option value="assigned" {{ $filter === 'assigned' ? 'selected' : '' }}>Assigned</option>
                     <option value="unassigned" {{ $filter === 'unassigned' ? 'selected' : '' }}>Not Assigned</option>
                 </select>
                 <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">filter_alt</span> Filter</button>
             </form>
-            <form method="GET" action="/admin/booths/search" style="display:flex; gap:8px; align-items:center;">
+            <form method="GET" action="/admin/booths/search" class="flex-row">
                 <input type="text" name="search" placeholder="Search Booth" style="width:200px">
                 <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">search</span> Search</button>
             </form>
@@ -28,6 +29,7 @@
         </div>
     </div>
 
+    <!-- Assigned booths list -->
     @if($filter === 'assigned')
         @if(count($booths) > 0)
             <div class="table-container">
@@ -67,6 +69,7 @@
             </div>
         @endif
     @else
+        <!-- Unassigned exhibitors list -->
         @if(count($unassignedExhibitors) > 0)
             <div class="table-container">
                 <table>

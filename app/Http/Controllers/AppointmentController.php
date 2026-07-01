@@ -6,6 +6,7 @@ use App\Models\appointments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// Manages appointments for the logged-in exhibitor.
 class AppointmentController extends Controller
 {
     public function index()
@@ -41,6 +42,7 @@ class AppointmentController extends Controller
         return redirect('/exhibitor/appointments')->with('success', 'Appointment created successfully.');
     }
 
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function edit($id)
     {
         $appointment = appointments::where('appointment_id', $id)
@@ -50,6 +52,7 @@ class AppointmentController extends Controller
         return view('exhibitor.appointments.edit', compact('appointment'));
     }
 
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -75,6 +78,7 @@ class AppointmentController extends Controller
         return redirect('/exhibitor/appointments')->with('success', 'Appointment updated successfully.');
     }
 
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function destroy($id)
     {
         $appointment = appointments::where('appointment_id', $id)

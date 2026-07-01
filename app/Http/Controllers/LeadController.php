@@ -6,6 +6,7 @@ use App\Models\leads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+// Manages leads captured by the logged-in exhibitor.
 class LeadController extends Controller
 {
     public function index()
@@ -41,6 +42,7 @@ class LeadController extends Controller
         return redirect('/exhibitor/leads')->with('success', 'Lead added successfully.');
     }
     
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function edit($id)
     {
         $lead = leads::where('lead_id', $id)
@@ -50,6 +52,7 @@ class LeadController extends Controller
         return view('exhibitor.leads.edit', compact('lead'));
     }
 
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -74,6 +77,7 @@ class LeadController extends Controller
         return redirect('/exhibitor/leads')->with('success', 'Lead updated successfully.');
     }
 
+    // Scoped to the logged-in exhibitor — returns 404 if not owned by them.
     public function destroy($id)
     {
         $lead = leads::where('lead_id', $id)
@@ -85,6 +89,7 @@ class LeadController extends Controller
         return redirect('/exhibitor/leads')->with('success', 'Lead deleted successfully.');
     }
 
+    // Search leads by name or company name, scoped to the logged-in exhibitor.
     public function search(Request $request)
     {
         $keyword = $request->search;

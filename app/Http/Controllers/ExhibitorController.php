@@ -7,8 +7,10 @@ use App\Models\exhibitors;
 use App\Models\shows;
 use Illuminate\Support\Facades\Auth;
 
+// Manages exhibitor profiles and the exhibitor dashboard.
 class ExhibitorController extends Controller
 {
+    // Create an exhibitor profile. Sets active status only if a show is running.
     public function store(Request $request)
     {
         $request->validate([
@@ -30,6 +32,7 @@ class ExhibitorController extends Controller
         return redirect('/exhibitor/dashboard')->with('success', 'Profile created successfully.');
     }
 
+    // Show the exhibitor dashboard with stats and show status flags.
     public function dashboard()
     {
         $user = Auth::user();
@@ -65,6 +68,7 @@ class ExhibitorController extends Controller
         ));
     }
 
+    // Join the active show. Requires an existing profile and an active show.
     public function joinShow(Request $request)
     {
         $exhibitor = Auth::user()->exhibitor;

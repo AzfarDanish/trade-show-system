@@ -3,10 +3,12 @@
 
 @section('content')
 
+    <!-- Page header -->
     <div class="page-header">
         <h1>Edit Booth</h1>
     </div>
 
+    <!-- Booth edit form -->
     <div class="form-card">
         <h2>Booth Details</h2>
 

@@ -19,8 +19,10 @@
 </head>
 <body>
 
+<!-- Registration page with branding panel and sign-up form -->
 <div class="auth-container">
 
+    <!-- Left: branding and feature highlights -->
     <div class="auth-left">
         <h1>ExpoTrack</h1>
         <p class="tagline">Join the platform and manage your trade show presence effectively.</p>
@@ -32,6 +34,7 @@
         </div>
     </div>
 
+    <!-- Right: registration form -->
     <div class="auth-right">
         <h2>Create Account</h2>
         <p class="auth-subtitle">Get started with ExpoTrack</p>
