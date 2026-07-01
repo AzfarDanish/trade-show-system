@@ -11,7 +11,7 @@ class BoothController extends Controller
 {
     public function create()
     {
-        $exhibitors = exhibitors::all();
+        $exhibitors = exhibitors::whereDoesntHave('booth')->get();
 
         return view('admin.booths.create', compact('exhibitors'));
     }
@@ -19,7 +19,7 @@ class BoothController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'exhibitor_id' => 'required',
+            'exhibitor_id' => 'required|exists:exhibitors,exhibitor_id|unique:booths,exhibitor_id',
             'booth_number' => 'required|unique:booths',
             'location' => 'required'
         ]);
@@ -31,6 +31,42 @@ class BoothController extends Controller
         ]);
 
         return redirect('/admin/booths')->with('success', 'Booth assigned successfully.');
+    }
+
+    public function edit($id)
+    {
+        $booth = booths::findOrFail($id);
+        $exhibitors = exhibitors::whereDoesntHave('booth')
+            ->orWhere('exhibitor_id', $booth->exhibitor_id)
+            ->get();
+
+        return view('admin.booths.edit', compact('booth', 'exhibitors'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'exhibitor_id' => 'required|exists:exhibitors,exhibitor_id|unique:booths,exhibitor_id,' . $id . ',booth_id',
+            'booth_number' => 'required|unique:booths,booth_number,' . $id . ',booth_id',
+            'location' => 'required'
+        ]);
+
+        $booth = booths::findOrFail($id);
+        $booth->update([
+            'exhibitor_id' => $request->exhibitor_id,
+            'booth_number' => $request->booth_number,
+            'location' => $request->location
+        ]);
+
+        return redirect('/admin/booths')->with('success', 'Booth updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $booth = booths::findOrFail($id);
+        $booth->delete();
+
+        return redirect('/admin/booths')->with('success', 'Booth deleted successfully.');
     }
 
     public function show()

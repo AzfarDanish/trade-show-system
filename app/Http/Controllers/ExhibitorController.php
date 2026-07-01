@@ -34,7 +34,7 @@ class ExhibitorController extends Controller
         $totalAppointments = $exhibitor->appointments()->count();
         $appointmentsConfirmed = $exhibitor->appointments()->where('status', 'Confirmed')->count();
         $appointmentsCompleted = $exhibitor->appointments()->where('status', 'Completed')->count();
-        $hasBooth = $exhibitor->booth ? 'Assigned' : 'Not assigned';
+        $booth = $exhibitor->booth;
 
         return view('exhibitor.dashboard', compact(
             'user',
@@ -43,7 +43,7 @@ class ExhibitorController extends Controller
             'totalAppointments',
             'appointmentsConfirmed',
             'appointmentsCompleted',
-            'hasBooth'
+            'booth'
         ));
     }
 

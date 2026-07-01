@@ -26,6 +26,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
     Route::get('/admin/booths/create', [BoothController::class, 'create']);
     Route::post('/admin/booths/store', [BoothController::class, 'store']);
+    Route::get('/admin/booths/edit/{id}', [BoothController::class, 'edit']);
+    Route::put('/admin/booths/update/{id}', [BoothController::class, 'update']);
+    Route::delete('/admin/booths/delete/{id}', [BoothController::class, 'destroy']);
 
     Route::get('/admin/exhibitors', [AdminController::class, 'exhibitors']);
     Route::get('/admin/leads', [AdminController::class, 'leads']);

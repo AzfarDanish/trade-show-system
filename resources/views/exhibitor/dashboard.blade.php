@@ -2,9 +2,11 @@
 @section('title', 'Dashboard')
 @section('content')
 
-    <div class="welcome-banner">
-        <h1>Exhibitor Dashboard</h1>
-        <p>Welcome, {{ $user->name }}</p>
+    <div class="page-header">
+        <div>
+            <h1>Exhibitor Dashboard</h1>
+            <p class="subtitle">Welcome, {{ $user->name }}</p>
+        </div>
     </div>
 
     <div class="stats-grid">
@@ -24,10 +26,17 @@
             <div class="stat-value">{{ $appointmentsCompleted }}</div>
             <div class="stat-label">Completed</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">{{ $hasBooth }}</div>
-            <div class="stat-label">Booth Status</div>
-        </div>
+        @if($booth)
+            <div class="stat-card">
+                <div class="stat-value">{{ $booth->booth_number }}</div>
+                <div style="font-size:.82rem;color:var(--neutral-400);margin-top:6px;">{{ $booth->location }}</div>
+            </div>
+        @else
+            <div class="stat-card">
+                <div class="stat-value">—</div>
+                <div class="stat-label">Booth</div>
+            </div>
+        @endif
     </div>
 
     <div class="profile-card">

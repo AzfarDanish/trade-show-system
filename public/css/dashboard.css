@@ -1,28 +1,30 @@
 /* ---------- Design Tokens ---------- */
 :root {
-  --maroon-800: #5C162B;
-  --maroon-700: #7B1E3A;
-  --maroon-600: #9C2B4F;
-  --maroon-500: #B84064;
-  --maroon-100: #FDF2F5;
-  --maroon-50: #FFF8FA;
+  --blue-800: #0B3D91;
+  --blue-700: #1166D4;
+  --blue-600: #1A7AE0;
+  --blue-500: #3D8FF5;
+  --blue-100: #E8F1FD;
+  --blue-50: #F4F8FF;
 
   --neutral-950: #0F172A;
   --neutral-800: #1E293B;
   --neutral-600: #64748B;
   --neutral-400: #94A3B8;
   --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
   --neutral-100: #F1F5F9;
   --neutral-50: #F8FAFC;
 
   --red: #EF4444;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
   --shadow-md: 0 4px 12px rgba(0,0,0,.07);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 /* ---------- Reset ---------- */
@@ -49,23 +51,16 @@ body {
 .topbar {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 240px;
   right: 0;
   height: 64px;
   background: #fff;
   border-bottom: 1px solid var(--neutral-200);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0 32px;
   z-index: 100;
-}
-
-.logo {
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -.02em;
-  color: var(--maroon-700);
 }
 
 .top-right {
@@ -106,40 +101,57 @@ body {
 /* ---------- Sidebar ---------- */
 .sidebar {
   position: fixed;
-  top: 64px;
+  top: 0;
   left: 0;
   bottom: 0;
   width: 240px;
-  background: #fff;
-  border-right: 1px solid var(--neutral-200);
-  padding: 24px 16px;
+  background: var(--blue-800);
   overflow-y: auto;
   z-index: 90;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 12px rgba(0,0,0,.08);
+}
+
+.sidebar-logo {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  padding: 24px 20px 20px;
+  letter-spacing: -.02em;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: rgba(255,255,255,.08);
+  margin: 0 20px 16px;
 }
 
 .sidebar-label {
-  font-size: .7rem;
+  font-size: .65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--neutral-400);
-  margin: 0 12px 12px;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.35);
+  margin: 0 20px 8px;
 }
 
 .sidebar a {
   display: block;
-  padding: 10px 14px;
-  margin-bottom: 2px;
-  font-size: .88rem;
+  padding: 10px 20px;
+  margin: 0 12px 2px;
+  font-size: .85rem;
   font-weight: 500;
-  color: var(--neutral-600);
+  color: rgba(255,255,255,.7);
   text-decoration: none;
   border-radius: var(--radius-sm);
+  transition: all .15s;
 }
 
 .sidebar a:hover {
-  background: var(--maroon-50);
-  color: var(--maroon-700);
+  background: rgba(255,255,255,.08);
+  color: #fff;
 }
 
 /* ---------- Main Content ---------- */
@@ -168,6 +180,7 @@ body {
 .page-header h1 {
   font-size: 1.6rem;
   font-weight: 700;
+  font-family: var(--font-serif);
   color: var(--neutral-950);
   letter-spacing: -.02em;
 }
@@ -198,7 +211,8 @@ body {
 .stat-card .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--maroon-700);
+  font-family: var(--font-serif);
+  color: var(--neutral-950);
   line-height: 1.2;
 }
 
@@ -213,6 +227,7 @@ body {
 h1 {
   font-size: 1.6rem;
   font-weight: 700;
+  font-family: var(--font-serif);
   color: var(--neutral-950);
   letter-spacing: -.02em;
   margin-bottom: 8px;
@@ -221,6 +236,7 @@ h1 {
 h2 {
   font-size: 1.05rem;
   font-weight: 600;
+  font-family: var(--font-serif);
   color: var(--neutral-950);
 }
 
@@ -278,8 +294,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--maroon-500);
-  box-shadow: 0 0 0 3px var(--maroon-100);
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px var(--blue-100);
 }
 
 textarea {
@@ -303,7 +319,7 @@ button[type="submit"] {
   font-weight: 600;
   font-family: var(--font);
   color: #fff;
-  background: var(--maroon-700);
+  background: var(--blue-700);
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -314,23 +330,25 @@ button[type="submit"] {
 
 .btn:hover,
 button[type="submit"]:hover {
-  background: var(--maroon-800);
+  background: var(--blue-800);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--maroon-700);
-  border: 1px solid var(--maroon-700);
+  color: var(--neutral-600);
+  border: 1px solid var(--neutral-300);
 }
 
 .btn-outline:hover {
-  background: var(--maroon-50);
+  background: var(--neutral-100);
+  color: var(--neutral-800);
+  border-color: var(--neutral-800);
 }
 
 .btn-sm {
-  padding: 6px 14px;
-  font-size: .8rem;
+  padding: 10px 14px;
+  font-size: .82rem;
 }
 
 .btn-danger {
@@ -344,6 +362,8 @@ button[type="submit"]:hover {
 .inline-actions {
   display: flex;
   gap: 8px;
+  justify-content: flex-end;
+  white-space: nowrap;
 }
 
 .form-actions {
@@ -357,12 +377,11 @@ button[type="submit"]:hover {
   background: #fff;
   border: 1px solid var(--neutral-200);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   font-size: .88rem;
 }
@@ -378,12 +397,26 @@ thead {
 
 th {
   padding: 12px 20px;
-  text-align: left;
   font-weight: 600;
   font-size: .78rem;
   text-transform: uppercase;
   letter-spacing: .04em;
   color: var(--neutral-400);
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+th:last-child,
+td:last-child {
+  text-align: right;
+}
+
+th:not(:first-child):not(:last-child),
+td:not(:first-child):not(:last-child) {
+  text-align: center;
 }
 
 td {
@@ -427,13 +460,13 @@ tr:last-child td {
 
 /* ---------- Links ---------- */
 a {
-  color: var(--maroon-700);
+  color: var(--neutral-800);
   text-decoration: none;
   transition: color .2s;
 }
 
 a:hover {
-  color: var(--maroon-800);
+  color: var(--neutral-950);
 }
 
 /* ---------- Flash Messages ---------- */
@@ -484,25 +517,6 @@ a:hover {
 
 .empty-state p {
   font-size: .9rem;
-}
-
-/* ---------- Welcome Section ---------- */
-.welcome-banner {
-  background: linear-gradient(135deg, var(--maroon-700), var(--maroon-600));
-  color: #fff;
-  border-radius: var(--radius-lg);
-  padding: 36px 40px;
-  margin-bottom: 40px;
-}
-
-.welcome-banner h1 {
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.welcome-banner p {
-  color: rgba(255,255,255,.8);
-  font-size: .95rem;
 }
 
 /* ---------- Profile Info Card ---------- */

@@ -4,9 +4,11 @@
 
 @section('content')
 
-    <div class="welcome-banner">
-        <h1>Dashboard Overview</h1>
-        <p>Welcome back, {{ Auth::user()->name ?? 'Admin' }}</p>
+    <div class="page-header">
+        <div>
+            <h1>Dashboard Overview</h1>
+            <p class="subtitle">Welcome back, {{ Auth::user()->name ?? 'Admin' }}</p>
+        </div>
     </div>
 
     <div class="stats-grid">

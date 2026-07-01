@@ -8,7 +8,7 @@
             <h1>All Appointments</h1>
             <p class="subtitle">{{ count($appointments) }} appointment(s)</p>
         </div>
-        <form method="GET" action="/admin/appointments/filter">
+        <form method="GET" action="/admin/appointments/filter" style="display:flex; gap:8px; align-items:center;">
             <select name="status" style="width:160px">
                 <option value="">All Statuses</option>
                 <option value="Confirmed">Confirmed</option>
@@ -24,11 +24,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width:20%">Client</th>
-                        <th style="width:16%">Date & Time</th>
-                        <th style="width:28%">Purpose</th>
-                        <th style="width:18%">Exhibitor</th>
-                        <th style="width:18%">Status</th>
+                        <th>Client</th>
+                        <th>Date & Time</th>
+                        <th>Purpose</th>
+                        <th>Exhibitor</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -8,7 +8,7 @@
             <h1>All Leads</h1>
             <p class="subtitle">{{ count($leads) }} lead(s) captured</p>
         </div>
-        <form method="GET" action="/admin/leads/search">
+        <form method="GET" action="/admin/leads/search" style="display:flex; gap:8px; align-items:center;">
             <input type="text" name="search" placeholder="Search Lead" style="width:220px">
             <button type="submit" class="btn btn-sm">Search</button>
         </form>
@@ -19,11 +19,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width:20%">Lead</th>
-                        <th style="width:22%">Company</th>
-                        <th style="width:22%">Contact</th>
-                        <th style="width:20%">Exhibitor</th>
-                        <th style="width:16%">Date Added</th>
+                        <th>Lead</th>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Exhibitor</th>
+                        <th>Date Added</th>
                     </tr>
                 </thead>
                 <tbody>

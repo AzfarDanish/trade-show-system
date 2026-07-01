@@ -16,11 +16,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width:20%">Client</th>
-                        <th style="width:16%">Date & Time</th>
-                        <th style="width:28%">Purpose</th>
-                        <th style="width:16%">Status</th>
-                        <th style="width:20%">Actions</th>
+                        <th>Client</th>
+                        <th>Date & Time</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

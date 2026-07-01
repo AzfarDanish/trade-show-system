@@ -8,7 +8,7 @@
             <h1>All Exhibitors</h1>
             <p class="subtitle">{{ count($exhibitors) }} exhibitor(s) registered</p>
         </div>
-        <form method="GET" action="/admin/exhibitors/search">
+        <form method="GET" action="/admin/exhibitors/search" style="display:flex; gap:8px; align-items:center;">
             <input type="text" name="search" placeholder="Search Exhibitor" style="width:220px">
             <button type="submit" class="btn btn-sm">Search</button>
         </form>
@@ -19,11 +19,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width:25%">Company</th>
-                        <th style="width:25%">Representative</th>
-                        <th style="width:20%">Phone</th>
-                        <th style="width:15%">Booth</th>
-                        <th style="width:15%">Leads</th>
+                        <th>Company</th>
+                        <th>Representative</th>
+                        <th>Phone</th>
+                        <th>Booth</th>
+                        <th>Leads</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -8,8 +8,8 @@
             <h1>My Leads</h1>
             <p class="subtitle">{{ count($leads) }} lead(s)</p>
         </div>
-        <div style="display:flex; gap:12px;">
-            <form method="GET" action="/exhibitor/leads/search">
+        <div style="display:flex; gap:12px; align-items:center;">
+            <form method="GET" action="/exhibitor/leads/search" style="display:flex; gap:8px; align-items:center;">
                 <input type="text" name="search" placeholder="Search Lead" style="width:200px">
                 <button type="submit" class="btn btn-sm">Search</button>
             </form>
@@ -22,11 +22,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width:18%">Lead</th>
-                        <th style="width:22%">Company</th>
-                        <th style="width:22%">Contact</th>
-                        <th style="width:18%">Date Added</th>
-                        <th style="width:20%">Actions</th>
+                        <th>Lead</th>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

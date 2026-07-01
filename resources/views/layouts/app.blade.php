@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExpoTrack — @yield('title', 'Dashboard')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
 
 <header class="topbar">
-    <div class="logo">ExpoTrack</div>
     <div class="top-right">
         <span>{{ Auth::user()->role }}</span>
         <form method="POST" action="/logout">
@@ -24,6 +24,8 @@
 <div class="main-layout">
 
     <aside class="sidebar">
+        <div class="sidebar-logo">ExpoTrack</div>
+        <div class="sidebar-divider"></div>
         <div class="sidebar-label">Navigation</div>
 
         @if(Auth::user()->role == 'admin')
