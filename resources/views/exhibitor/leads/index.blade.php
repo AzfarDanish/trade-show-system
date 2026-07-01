@@ -11,9 +11,9 @@
         <div style="display:flex; gap:12px; align-items:center;">
             <form method="GET" action="/exhibitor/leads/search" style="display:flex; gap:8px; align-items:center;">
                 <input type="text" name="search" placeholder="Search Lead" style="width:200px">
-                <button type="submit" class="btn btn-sm">Search</button>
+                <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">search</span> Search</button>
             </form>
-            <a href="/exhibitor/leads/create" class="btn btn-sm">+ Add Lead</a>
+            <a href="/exhibitor/leads/create" class="btn btn-sm"><span class="material-symbols-outlined">add</span> Add Lead</a>
         </div>
     </div>
 
@@ -38,11 +38,11 @@
                             <td>{{ $lead->created_at ? $lead->created_at->format('M d, Y') : '—' }}</td>
                             <td>
                                 <div class="inline-actions">
-                                    <a href="/exhibitor/leads/edit/{{ $lead->lead_id }}" class="btn btn-sm btn-outline">Edit</a>
+                                    <a href="/exhibitor/leads/edit/{{ $lead->lead_id }}" class="btn btn-sm btn-outline"><span class="material-symbols-outlined">edit</span> Edit</a>
                                     <form method="POST" action="/exhibitor/leads/delete/{{ $lead->lead_id }}" onsubmit="return confirm('Delete this lead?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-danger"><span class="material-symbols-outlined">delete</span> Delete</button>
                                     </form>
                                 </div>
                             </td>

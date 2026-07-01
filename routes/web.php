@@ -39,6 +39,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/leads/search', [AdminController::class, 'searchLeads']);
     Route::get('/admin/booths/search', [AdminController::class, 'searchBooths']);
     Route::get('/admin/appointments/filter', [AdminController::class, 'filterAppointments']);
+    Route::post('/admin/shows/end', [AdminController::class, 'endShow']);
+    Route::get('/admin/shows/create', [AdminController::class, 'createShow']);
+    Route::post('/admin/shows/store', [AdminController::class, 'storeShow']);
+    Route::get('/admin/shows/edit/{id}', [AdminController::class, 'editShow']);
+    Route::put('/admin/shows/update/{id}', [AdminController::class, 'updateShow']);
 });
 
 Route::middleware(['auth', 'exhibitor'])->group(function () {
@@ -71,4 +76,5 @@ Route::middleware(['auth', 'exhibitor'])->group(function () {
     });
 
     Route::post('/exhibitor/profile/store', [ExhibitorController::class, 'store']);
+    Route::post('/exhibitor/join', [ExhibitorController::class, 'joinShow']);
 });

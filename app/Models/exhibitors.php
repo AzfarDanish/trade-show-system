@@ -12,12 +12,13 @@ class exhibitors extends Model
         'user_id',
         'company_name',
         'representative_name',
-        'phone_number'
+        'phone_number',
+        'status',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(users::class, 'user_id');
     }
 
     public function booth()
@@ -33,5 +34,20 @@ class exhibitors extends Model
     public function appointments()
     {
         return $this->hasMany(appointments::class, 'exhibitor_id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function joinShow()
+    {
+        $this->update(['status' => 'active']);
+    }
+
+    public function deactivate()
+    {
+        $this->update(['status' => 'inactive']);
     }
 }

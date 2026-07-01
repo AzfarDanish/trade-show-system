@@ -5,19 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\booths;
 use App\Models\exhibitors;
+use App\Models\shows;
 use Illuminate\Support\Facades\Auth;
 
 class BoothController extends Controller
 {
     public function create()
     {
-        $exhibitors = exhibitors::whereDoesntHave('booth')->get();
+        $activeShow = shows::activeShow();
+        $exhibitors = exhibitors::active()->whereDoesntHave('booth')->get();
 
-        return view('admin.booths.create', compact('exhibitors'));
+        return view('admin.booths.create', compact('exhibitors', 'activeShow'));
     }
 
     public function store(Request $request)
     {
+        $activeShow = shows::activeShow();
+
+        if (!$activeShow) {
+            return back()->with('error', 'No active show. Cannot assign booth.');
+        }
+
         $request->validate([
             'exhibitor_id' => 'required|exists:exhibitors,exhibitor_id|unique:booths,exhibitor_id',
             'booth_number' => 'required|unique:booths',
@@ -27,7 +35,8 @@ class BoothController extends Controller
         booths::create([
             'exhibitor_id' => $request->exhibitor_id,
             'booth_number' => $request->booth_number,
-            'location' => $request->location
+            'location' => $request->location,
+            'show_id' => $activeShow->show_id,
         ]);
 
         return redirect('/admin/booths')->with('success', 'Booth assigned successfully.');
@@ -36,7 +45,8 @@ class BoothController extends Controller
     public function edit($id)
     {
         $booth = booths::findOrFail($id);
-        $exhibitors = exhibitors::whereDoesntHave('booth')
+        $exhibitors = exhibitors::active()
+            ->whereDoesntHave('booth')
             ->orWhere('exhibitor_id', $booth->exhibitor_id)
             ->get();
 

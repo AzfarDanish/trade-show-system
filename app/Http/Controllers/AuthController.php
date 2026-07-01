@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +17,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed'
         ]);
 
-        User::create([
+        users::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -39,7 +39,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role == 'admin') {
-                return redirect('/admin/dashboard' );
+                return redirect('/admin/dashboard');
             }
 
             if (Auth::user()->role == 'exhibitor') {

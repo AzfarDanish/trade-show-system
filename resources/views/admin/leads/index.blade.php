@@ -10,7 +10,7 @@
         </div>
         <form method="GET" action="/admin/leads/search" style="display:flex; gap:8px; align-items:center;">
             <input type="text" name="search" placeholder="Search Lead" style="width:220px">
-            <button type="submit" class="btn btn-sm">Search</button>
+            <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">search</span> Search</button>
         </form>
     </div>
 

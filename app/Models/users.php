@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\exhibitors;
-
-class User extends Authenticatable
+class users extends Authenticatable
 {
     protected $fillable = [
         'name',

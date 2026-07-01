@@ -39,8 +39,8 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn">Save Lead</button>
-                <a href="/exhibitor/leads" class="btn btn-outline">Cancel</a>
+                <button type="submit" class="btn"><span class="material-symbols-outlined">save</span> Save Lead</button>
+                <a href="/exhibitor/leads" class="btn btn-outline"><span class="material-symbols-outlined">close</span> Cancel</a>
             </div>
         </form>
     </div>

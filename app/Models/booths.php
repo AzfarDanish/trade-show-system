@@ -11,11 +11,17 @@ class booths extends Model
     protected $fillable = [
         'exhibitor_id',
         'booth_number',
-        'location'
+        'location',
+        'show_id',
     ];
 
     public function exhibitor()
     {
         return $this->belongsTo(exhibitors::class, 'exhibitor_id');
+    }
+
+    public function show()
+    {
+        return $this->belongsTo(shows::class, 'show_id');
     }
 }

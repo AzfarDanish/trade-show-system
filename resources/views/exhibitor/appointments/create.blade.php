@@ -34,8 +34,8 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn">Save Appointment</button>
-                <a href="/exhibitor/appointments" class="btn btn-outline">Cancel</a>
+                <button type="submit" class="btn"><span class="material-symbols-outlined">save</span> Save Appointment</button>
+                <a href="/exhibitor/appointments" class="btn btn-outline"><span class="material-symbols-outlined">close</span> Cancel</a>
             </div>
         </form>
     </div>

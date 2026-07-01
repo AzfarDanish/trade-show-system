@@ -8,7 +8,7 @@
             <h1>My Appointments</h1>
             <p class="subtitle">{{ count($appointments) }} appointment(s)</p>
         </div>
-        <a href="/exhibitor/appointments/create" class="btn">+ Add Appointment</a>
+        <a href="/exhibitor/appointments/create" class="btn"><span class="material-symbols-outlined">add</span> Add Appointment</a>
     </div>
 
     @if(count($appointments) > 0)
@@ -38,11 +38,11 @@
                             </td>
                             <td>
                                 <div class="inline-actions">
-                                    <a href="/exhibitor/appointments/edit/{{ $appointment->appointment_id }}" class="btn btn-sm btn-outline">Edit</a>
+                                    <a href="/exhibitor/appointments/edit/{{ $appointment->appointment_id }}" class="btn btn-sm btn-outline"><span class="material-symbols-outlined">edit</span> Edit</a>
                                     <form method="POST" action="/exhibitor/appointments/delete/{{ $appointment->appointment_id }}" onsubmit="return confirm('Delete this appointment?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-danger"><span class="material-symbols-outlined">delete</span> Delete</button>
                                     </form>
                                 </div>
                             </td>

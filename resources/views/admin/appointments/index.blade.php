@@ -15,7 +15,7 @@
                 <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
             </select>
-            <button type="submit" class="btn btn-sm">Filter</button>
+            <button type="submit" class="btn btn-sm"><span class="material-symbols-outlined">filter_alt</span> Filter</button>
         </form>
     </div>
 
