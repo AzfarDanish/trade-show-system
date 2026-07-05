@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+// Represents a sales lead or prospect captured by an exhibitor.
 class leads extends Model
 {
     protected $primaryKey = 'lead_id';
@@ -17,6 +18,7 @@ class leads extends Model
         'notes'
     ];
 
+    // Each lead belongs to a single exhibitor.
     public function exhibitor()
     {
         return $this->belongsTo(exhibitors::class, 'exhibitor_id');

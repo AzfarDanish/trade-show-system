@@ -19,14 +19,12 @@ class ExhibitorController extends Controller
             'phone_number' => 'required'
         ]);
 
-        $activeShow = shows::activeShow();
-
         exhibitors::create([
             'user_id' => Auth::id(),
             'company_name' => $request->company_name,
             'representative_name' => $request->representative_name,
             'phone_number' => $request->phone_number,
-            'status' => $activeShow ? 'active' : 'inactive',
+            'status' => 'inactive',
         ]);
 
         return redirect('/exhibitor/dashboard')->with('success', 'Profile created successfully.');

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+// Represents an authenticated system user (admin or exhibitor).
 class users extends Authenticatable
 {
     protected $fillable = [
@@ -16,6 +17,7 @@ class users extends Authenticatable
         'password',
     ];
 
+    // A user can have one exhibitor profile.
     public function exhibitor()
     {
         return $this->hasOne(exhibitors::class, 'user_id');

@@ -18,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'exhibitor' => ExhibitorMiddleware::class,
             'admin' => AdminMiddleware::class,
         ]);
+
+        $middleware->redirectGuestsTo('/');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

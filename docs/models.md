@@ -1,6 +1,6 @@
 # Laravel Models Documentation
 
-Generated on: 2026-07-01 05:45:06
+Generated on: 2026-07-04 15:52:20
 
 ## appointments
 

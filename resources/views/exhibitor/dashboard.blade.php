@@ -9,8 +9,8 @@
         </div>
     @elseif($canJoin)
         <div class="banner banner-join">
-            <span>This show has ended. A new show is coming up—click here to join!</span>
-            <form method="POST" action="/exhibitor/join" onsubmit="return confirm('Join the new show? Your existing profile and past data will carry over automatically.')">
+            <span>An active show is available. Click here to join now!</span>
+            <form method="POST" action="/exhibitor/join" onsubmit="return confirm('Join the active show? Your existing profile and past data will carry over automatically.')">
                 @csrf
                 <button type="submit" class="banner-btn"><span class="material-symbols-outlined">login</span> Join</button>
             </form>
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Show info, poster, and statistics grid -->
-    @if($activeShow)
+    @if($showActive)
         <div class="poster-flex">
             @if($activeShow->poster)
                 <div class="poster-side">
